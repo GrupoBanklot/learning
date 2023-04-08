@@ -1,0 +1,34 @@
+version: '3'
+services:
+
+  service-gateway:
+    container_name: service-gateway
+    build:
+      context: .
+      dockerfile:  service-gateway/Dockerfile
+    ports:
+      - "8081:8081"
+    environment:
+      - OUTBOUND_HOST_PORT=service-ticket:8082
+      - JAEGER_SERVICE_NAME=service-gateway
+      - JAEGER_AGENT_HOST=jaeger
+      - JAEGER_SAMPLER_TYPE=const
+      - JAEGER_SAMPLER_PARAM=1
+      - JAEGER_REPORTER_LOG_SPANS=true
+
+  service-ticket:
+    container_name: service-ticket
+    build:
+      context: .
+      dockerfile: service-ticket/Dockerfile
+    environment:
+      - JAEGER_SERVICE_NAME=service-ticket
+      - JAEGER_AGENT_HOST=jaeger
+      - JAEGER_SAMPLER_TYPE=const
+      - JAEGER_SAMPLER_PARAM=1
+      - JAEGER_REPORTER_LOG_SPANS=true
+
+  jaeger:
+    image: jaegertracing/all-in-one
+    ports:
+      - "16686:16686"
