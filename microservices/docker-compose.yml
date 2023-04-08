@@ -4,8 +4,8 @@ services:
   service-gateway:
     container_name: service-gateway
     build:
-      context: .
-      dockerfile:  service-gateway/Dockerfile
+      context: ..
+      dockerfile: service-gateway/Dockerfile
     ports:
       - "8081:8081"
     environment:
@@ -19,7 +19,7 @@ services:
   service-ticket:
     container_name: service-ticket
     build:
-      context: .
+      context: ..
       dockerfile: service-ticket/Dockerfile
     environment:
       - JAEGER_SERVICE_NAME=service-ticket

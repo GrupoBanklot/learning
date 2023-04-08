@@ -23,7 +23,7 @@ $ curl -w '\n' http://localhost:8081/ping
 
 Should see `service-a -> service-b` on STDOUT.
 
-Go to http://localhost:16686/ and select `service-http` from the "Service" dropdown and click the "Find Traces" button.
+Go to http://localhost:16686/ and select `service-gateway` from the "Service" dropdown and click the "Find Traces" button.
 
 ## Stop the example
 

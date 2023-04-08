@@ -9,6 +9,7 @@ import (
 
 	"ping/lib/ping"
 	"ping/lib/tracing"
+	"github.com/opentracing/opentracing-go"
 )
 
 const thisServiceName = "service-gateway"

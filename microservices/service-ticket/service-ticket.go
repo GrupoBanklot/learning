@@ -6,6 +6,7 @@ import (
 	"net/http"
 
 	"ping/lib/tracing"
+	"github.com/opentracing/opentracing-go"
 )
 
 const thisServiceName = "service-ticket"
